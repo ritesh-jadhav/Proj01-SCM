@@ -1,4 +1,30 @@
-<div th:fragment="parent(content)">
-    <h1>This is base div</h1>
-    <div th:replace="${content}"></div>
-</div>
+<!DOCTYPE html>
+<html
+  lang="en"
+  th:fragment="parent(content,title)"
+  xmlns:th="http://www.thymeleaf.org"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title data-th-replace="${title}">Base page</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" data-th-href="@{'./css/output.css'}" />
+  </head>
+  <body>
+    <div data-th-replace="~{navbar :: navbar}">
+
+    </div>
+    <!-- Main content -->
+    <div class="p-4">
+      <section th:replace="${content}"></section>
+    </div>
+    <footer class="p-4">Footer : Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, a?</footer>
+    <!--Flowbite-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+  </body>
+</html>
