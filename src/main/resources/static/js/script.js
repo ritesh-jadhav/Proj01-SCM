@@ -11,8 +11,6 @@ function changeTheme() {
   //
   const changeThemeButton = document.querySelector("#change_theme_button");
 
-  changeThemeButton.querySelector("span").textContent =
-    currentTheme == "light" ? "Dark" : "Light";
   const oldTheme = currentTheme;
   changeThemeButton.addEventListener("click", (event) => {
     //theme toggler
