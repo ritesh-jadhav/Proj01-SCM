@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Proj01ScmApplication {
 
 	public static void main(String[] args) {
+		System.out.println("Application stared===");
 		SpringApplication.run(Proj01ScmApplication.class, args);
 	}
 

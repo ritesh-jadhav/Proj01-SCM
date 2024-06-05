@@ -1,4 +1,8 @@
 spring:
+  security:
+    user:
+      name: ritesh
+      password: abc@123
   application:
     name: spring.application.name=Proj01-SCM
   datasource:
