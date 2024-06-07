@@ -23,6 +23,7 @@ public class UserServiceImpl implements IUserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
