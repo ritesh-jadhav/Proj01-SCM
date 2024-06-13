@@ -17,9 +17,7 @@ import com.boot.repo.UserRepo;
 
 @Service
 public class UserServiceImpl implements IUserService {
-
-    private Logger logger = LoggerFactory.getLogger(this.getClass());
-
+    
     @Autowired
     private UserRepo userRepo;
 
@@ -45,7 +43,7 @@ public class UserServiceImpl implements IUserService {
     @Override
     public Optional<User> updateUser(User user) {
         User existingUser = userRepo.findById(user.getUserId())
-                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found with id:" + user.getUserId()));
         existingUser.setName(user.getName());
         existingUser.setEmail(user.getEmail());
         existingUser.setPassword(user.getPassword());

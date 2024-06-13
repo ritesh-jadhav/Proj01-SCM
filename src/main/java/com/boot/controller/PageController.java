@@ -37,6 +37,12 @@ public class PageController {
         return "about";
     }
 
+    @GetMapping("/")
+    public String index()
+    {
+        return "redirect:/home";
+    }
+
     @RequestMapping("/services")
     public String services() {
         return "services";

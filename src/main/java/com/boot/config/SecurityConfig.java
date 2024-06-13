@@ -29,8 +29,8 @@ public class SecurityConfig {
     // return InMemoryUserDetailsManager;
     // }
     @Autowired
-    private SecurityCustomUserServiceImpl userService;
-
+    private SecurityCustomUserServiceImpl userDetailService;
+    
     // password encoder obj
     @Bean
     public PasswordEncoder encoder() {
@@ -39,12 +39,12 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider DaoAuthenticationProvider = new DaoAuthenticationProvider();
+        DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         // user details service
-        DaoAuthenticationProvider.setUserDetailsService(userService);
+        daoAuthenticationProvider.setUserDetailsService(userDetailService);
         // password encoder
-        DaoAuthenticationProvider.setPasswordEncoder(encoder());
-        return DaoAuthenticationProvider;
+        daoAuthenticationProvider.setPasswordEncoder(encoder());
+        return daoAuthenticationProvider;
 
     }
 
@@ -53,8 +53,10 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         // configer url
+
+
         httpSecurity.authorizeHttpRequests(authorize -> {
-            // authorize.requestMatchers("/home", "/register", "/services").permitAll(); ->
+            // authorize.requestMatchers("/home", "/register", "/services").permitAll(); 
             // expose included routes
             // protects few eoutes
             authorize.requestMatchers("/user/**").authenticated();
